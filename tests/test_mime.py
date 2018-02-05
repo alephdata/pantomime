@@ -13,6 +13,9 @@ class MIMETest(unittest.TestCase):
         self.assertEqual(normalize_mimetype('1', default='foo'), None)
         self.assertEqual(normalize_mimetype(None), DEFAULT)
 
+        PST = 'application/VND.ms-outlook'
+        self.assertEqual(normalize_mimetype(PST), PST.lower())
+
     def test_parse(self):
         parsed = parse_mimetype('text/plain')
         self.assertEqual(parsed.charset, None)
