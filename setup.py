@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='celestial',
-    version='0.2.0',
+    version='0.2.1',
     description="MIME type processing tools.",
     long_description="",
     classifiers=[

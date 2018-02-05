@@ -10,10 +10,12 @@ class MIMEType(object):
     SEP = text('/')
 
     def __init__(self, family, subtype, params=None):
-        self.family = self.normalize_part(family, text('application'))
-        self.subtype = self.normalize_part(subtype, text('other'))
+        self.family = family
+        self.subtype = subtype
+        self.label = None
+        if self.family is not None and self.subtype is not None:
+            self.label = self.SEP.join((self.family, self.subtype))
         self.params = params
-        self.label = self.SEP.join((self.family, self.subtype))
 
     @property
     def charset(self):
@@ -22,25 +24,29 @@ class MIMEType(object):
         charset = self.params.get('charset')
         return normalize_encoding(charset, default=None)
 
-    def normalize_part(self, part, default):
-        part = stringify(part) or default
-        part = part.strip().lower()
-        return part
+    @classmethod
+    def split(cls, mime_type):
+        if mime_type is None or cls.SEP not in mime_type:
+            return None, None
+        family, subtype = (stringify(p) for p in mime_type.split(cls.SEP, 1))
+        if family is None or subtype is None:
+            return None, None
+        return family.lower(), subtype.lower()
 
     @classmethod
-    def parse(cls, mime_type, default):
-        mime_type = stringify(mime_type) or default
-        mime_type, params = parse_header(mime_type)
-        if cls.SEP not in mime_type:
-            mime_type = default
-        family, subtype = mime_type.split(cls.SEP, 1)
+    def parse(cls, mime_type, default=None):
+        mime_type = stringify(mime_type)
+        params = None
+        if mime_type is not None:
+            mime_type, params = parse_header(mime_type)
+
+        family, subtype = cls.split(mime_type)
+        if family is None:
+            family, subtype = cls.split(default)
         return cls(family, subtype, params=params)
 
-    def __unicode__(self):
-        return self.label
-
     def __str__(self):
-        return self.label
+        return text(self.label or 'application/octet-stream')
 
     def __repr__(self):
         return self.label

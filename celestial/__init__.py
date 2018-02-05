@@ -4,7 +4,7 @@ from celestial.types import DEFAULT
 
 def parse_mimetype(text, default=DEFAULT):
     """Parse a MIME type into a structured object."""
-    return MIMEType.parse(text, default)
+    return MIMEType.parse(text, default=default)
 
 
 def normalize_mimetype(text, default=DEFAULT):
