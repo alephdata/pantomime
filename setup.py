@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='celestial',
-    version='0.2.2',
+    version='0.2.3',
     description="MIME type processing tools.",
     long_description="",
     classifiers=[
@@ -28,6 +28,7 @@ setup(
     test_suite='nose.collector',
     install_requires=[
         'six >= 1.11.0',
+        'banal >= 0.3.5',
         'normality >= 0.5.6',
     ],
     tests_require=['nose'],

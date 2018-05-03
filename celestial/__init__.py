@@ -1,3 +1,7 @@
+import os
+from banal import decode_path
+from normality import slugify
+
 from celestial.parse import MIMEType
 from celestial.types import DEFAULT, PLAIN
 
@@ -20,3 +24,19 @@ def useful_mimetype(text):
         return False
     mimetype = normalize_mimetype(text)
     return mimetype not in [DEFAULT, PLAIN, None]
+
+
+def normalize_extension(extension):
+    """Normalise a file name extension."""
+    extension = decode_path(extension)
+    if extension is None:
+        return
+    if extension.startswith('.'):
+        extension = extension[1:]
+    if '.' in extension:
+        _, extension = os.path.splitext(extension)
+    extension = slugify(extension, sep='')
+    if extension is None:
+        return
+    if len(extension):
+        return extension
