@@ -13,3 +13,9 @@ class ExtensionTest(unittest.TestCase):
         self.assertEqual(normalize_extension('bla.DOC'), 'doc')
         self.assertEqual(normalize_extension('bla.DO C'), 'doc')
         self.assertEqual(normalize_extension('bla.  DOC  '), 'doc')
+
+        self.assertEqual(normalize_extension('TXT'), 'txt')
+        self.assertEqual(normalize_extension('.TXT'), 'txt')
+        self.assertEqual(normalize_extension('foo.txt'), 'txt')
+        self.assertEqual(normalize_extension('foo..TXT'), 'txt')
+        self.assertEqual(normalize_extension('.HTM,L'), 'html')
