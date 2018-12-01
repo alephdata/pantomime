@@ -14,7 +14,7 @@ of internet MIME types in Python.
 
 setup(
     name='pantomime',
-    version='0.3.2',
+    version='0.3.3',
     description="MIME type normalisation and labels.",
     long_description=DESCRIPTION,
     classifiers=[
