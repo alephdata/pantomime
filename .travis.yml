@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get install -y libicu-dev
 
 install:
-  - pip install coverage nose pyicu
+  - pip install coverage nose pyicu twine
   - pip install -e .
 
 script:
