@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='pantomime',
-    version='0.3.0',
+    version='0.3.1',
     description="MIME type normalisation and labels.",
     long_description="",
     classifiers=[
