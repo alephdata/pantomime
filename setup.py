@@ -3,8 +3,8 @@ from setuptools import setup, find_packages
 
 setup(
     name='pantomime',
-    version='0.2.3',
-    description="MIME type processing tools.",
+    version='0.3.0',
+    description="MIME type normalisation and labels.",
     long_description="",
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -15,7 +15,7 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.6'
     ],
-    keywords='names countries phones domains email country',
+    keywords='mime mimetypes file types',
     author='Journalism Development Network, Inc.',
     author_email='data@occrp.org',
     url='http://github.com/alephdata/pantomime',

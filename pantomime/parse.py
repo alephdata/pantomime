@@ -1,26 +1,37 @@
-from six import text_type as text
 from cgi import parse_header
 from normality import stringify
 from normality.encoding import normalize_encoding
 
+from pantomime.types import DEFAULT, LABELS
+from pantomime.mappings import REPLACE
+
 
 class MIMEType(object):
-    __slots__ = ['family', 'subtype', 'params', 'label']
+    __slots__ = ['family', 'subtype', 'params', 'name', 'normalized']
 
-    SEP = text('/')
+    SEP = '/'
 
     def __init__(self, family, subtype, params=None):
         self.family = family
         self.subtype = subtype
-        self.label = None
+        self.name = None
         if self.family is not None and self.subtype is not None:
-            self.label = self.SEP.join((self.family, self.subtype))
-        self.params = params
+            self.name = self.SEP.join((self.family, self.subtype))
+        self.normalized = REPLACE.get(self.name, self.name)
+        self.params = params or {}
+
+    @property
+    def label(self):
+        if self.normalized in LABELS:
+            return LABELS.get(self.normalized)
+        if self.subtype is not None:
+            label = self.subtype.lstrip('x')
+            label = label.replace('-', ' ')
+            label = label.replace('.', ' ')
+            return label.strip()
 
     @property
     def charset(self):
-        if self.params is None:
-            return
         charset = self.params.get('charset')
         return normalize_encoding(charset, default=None)
 
@@ -45,8 +56,14 @@ class MIMEType(object):
             family, subtype = cls.split(default)
         return cls(family, subtype, params=params)
 
+    def __eq__(self, other):
+        return self.name == other.name
+
+    def __hash__(self):
+        return hash(self.name)
+
     def __str__(self):
-        return text(self.label or 'application/octet-stream')
+        return self.name or DEFAULT
 
     def __repr__(self):
-        return self.label
+        return self.name

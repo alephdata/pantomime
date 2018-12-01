@@ -13,7 +13,7 @@ def parse_mimetype(text, default=DEFAULT):
 
 def normalize_mimetype(text, default=DEFAULT):
     """Normalize the spelling of a MIME type."""
-    return parse_mimetype(text, default=default).label
+    return parse_mimetype(text, default=default).normalized
 
 
 def useful_mimetype(text):

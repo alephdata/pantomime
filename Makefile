@@ -2,7 +2,7 @@
 all: clean test dists release
 
 test:
-	nosetests --with-coverage --cover-package=pantomime --cover-erase
+	nosetests --with-coverage --cover-package=pantomime --cover-erase --cover-html --cover-html-dir=coverage-report
 
 dists: clean
 	python setup.py sdist bdist_wheel
