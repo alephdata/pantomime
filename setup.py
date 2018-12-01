@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 
 setup(
-    name='celestial',
+    name='pantomime',
     version='0.2.3',
     description="MIME type processing tools.",
     long_description="",
@@ -18,7 +18,7 @@ setup(
     keywords='names countries phones domains email country',
     author='Journalism Development Network, Inc.',
     author_email='data@occrp.org',
-    url='http://github.com/alephdata/celestial',
+    url='http://github.com/alephdata/pantomime',
     license='MIT',
     packages=find_packages(exclude=['ez_setup', 'examples', 'test']),
     namespace_packages=[],

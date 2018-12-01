@@ -1,6 +1,6 @@
 import unittest
 
-from celestial import parse_mimetype, normalize_mimetype, DEFAULT
+from pantomime import parse_mimetype, normalize_mimetype, DEFAULT
 
 
 class MIMETest(unittest.TestCase):

@@ -2,8 +2,8 @@ import os
 from banal import decode_path
 from normality import slugify
 
-from celestial.parse import MIMEType
-from celestial.types import DEFAULT, PLAIN
+from pantomime.parse import MIMEType
+from pantomime.types import DEFAULT, PLAIN
 
 
 def parse_mimetype(text, default=DEFAULT):

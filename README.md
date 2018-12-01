@@ -1,6 +1,6 @@
-# celestial
+# pantomime
 
-[![Build Status](https://travis-ci.org/alephdata/celestial.svg?branch=master)](https://travis-ci.org/alephdata/celestial)
+[![Build Status](https://travis-ci.org/alephdata/pantomime.svg?branch=master)](https://travis-ci.org/alephdata/pantomime)
 
-``celestial`` is a micro-library that handles the parsing and normalisation of 
-internet MIME types in Python.
+``pantomime`` is a small library that handles the parsing and normalisation
+of internet MIME types in Python.

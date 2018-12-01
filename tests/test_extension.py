@@ -1,6 +1,6 @@
 import unittest
 
-from celestial import normalize_extension
+from pantomime import normalize_extension
 
 
 class ExtensionTest(unittest.TestCase):
