@@ -1,11 +1,22 @@
 from setuptools import setup, find_packages
 
+DESCRIPTION = """
+.. figure:: https://api.travis-ci.org/alephdata/pantomime.png
+   :target: https://travis-ci.org/alephdata/pantomime/
+   :alt: Build Status
+
+**pantomime** is a small library that handles the parsing and normalisation
+of internet MIME types in Python.
+
+`Documentation <https://github.com/alephdata/pantomime/blob/master/README.md>`_
+"""
+
 
 setup(
     name='pantomime',
     version='0.3.2',
     description="MIME type normalisation and labels.",
-    long_description="",
+    long_description=DESCRIPTION,
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
