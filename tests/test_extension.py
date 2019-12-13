@@ -1,6 +1,7 @@
 import unittest
 
-from pantomime import normalize_extension
+from pantomime.filename import normalize_extension
+from pantomime.filename import mimetype_extension as mime_ext
 
 
 class ExtensionTest(unittest.TestCase):
@@ -19,3 +20,9 @@ class ExtensionTest(unittest.TestCase):
         self.assertEqual(normalize_extension('foo.txt'), 'txt')
         self.assertEqual(normalize_extension('foo..TXT'), 'txt')
         self.assertEqual(normalize_extension('.HTM,L'), 'html')
+
+    def test_mimetype_extension(self):
+        self.assertEqual(mime_ext(None), None)
+        self.assertEqual(mime_ext(''), None)
+        self.assertEqual(mime_ext('bla'), None)
+        self.assertEqual(mime_ext('application/pdf'), 'pdf')
