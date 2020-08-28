@@ -1,27 +1,36 @@
 from pantomime.util import gettext
 
-DEFAULT = 'application/octet-stream'
-DIRECTORY = 'inode/directory'
-EMPTY = 'inode/x-empty'
+DEFAULT = "application/octet-stream"
+DIRECTORY = "inode/directory"
+EMPTY = "inode/x-empty"
 
-PLAIN = 'text/plain'
-PDF = 'application/pdf'
-EXCEL = 'application/vnd.ms-excel'
-WORD = 'application/vnd.ms-word'
-CSV = 'text/csv'
-RTF = 'text/rtf'
-PSD = 'image/vnd.adobe.photoshop'
-RAR = 'application/rar'
-ZIP = 'application/zip'
-GZIP = 'application/gzip'
-RFC822 = 'message/rfc822'
-HTML = 'text/html'
-JPEG = 'image/jpeg'
-PNG = 'image/png'
-GIF = 'image/gif'
-TIFF = 'image/tiff'
-DJVU = 'image/x.djvu'
-OPF = 'application/xml+opfmessage'
+PLAIN = "text/plain"
+PDF = "application/pdf"
+EXCEL = "application/vnd.ms-excel"
+XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+WORD = "application/vnd.ms-word"
+DOCX = "application/vnd.openxmlformats-officedocument.wordprocessing"
+CSV = "text/csv"
+RTF = "text/rtf"
+PSD = "image/vnd.adobe.photoshop"
+RAR = "application/rar"
+ZIP = "application/zip"
+GZIP = "application/gzip"
+RFC822 = "message/rfc822"
+HTML = "text/html"
+JPEG = "image/jpeg"
+PNG = "image/png"
+GIF = "image/gif"
+TIFF = "image/tiff"
+DJVU = "image/x.djvu"
+OPF = "application/xml+opfmessage"
+OUTLOOK = "application/vnd.ms-outlook"
+ZIP = "application/zip"
+JSON = "application/json"
+
+MIXED = "multipart/mixed"
+ALTERNATIVE = "multipart/alternative"
+RELATED = "multipart/related"
 
 
 LABELS = {
@@ -31,13 +40,15 @@ LABELS = {
     PLAIN: gettext("Plain text"),
     PDF: gettext("Portable Document Format"),
     EXCEL: gettext("Microsoft Excel"),
+    XLSX: gettext("Microsoft Excel 2002+"),
     WORD: gettext("Microsoft Word"),
+    DOCX: gettext("Microsoft Word 2002+"),
     CSV: gettext("Comma-separated table"),
     RTF: gettext("Rich text"),
     PSD: gettext("Adobe Photoshop"),
-    RAR: gettext("WinRAR Archive"),
-    ZIP: gettext("Zip Archive"),
-    GZIP: gettext("GZip Archive"),
+    RAR: gettext("WinRAR archive"),
+    ZIP: gettext("Zip archive"),
+    GZIP: gettext("GZip archive"),
     RFC822: gettext("Plain E-Mail"),
     HTML: gettext("HTML Web Page"),
     JPEG: gettext("JPEG Image"),
@@ -45,5 +56,7 @@ LABELS = {
     DJVU: gettext("DejaVu E-Book"),
     PNG: gettext("Portable Nework Graphics"),
     GIF: gettext("Graphics Interchange Format"),
-    OPF: gettext("Outlook for Mac E-Mail")
+    OPF: gettext("Microsoft Outlook for Mac E-Mail"),
+    OUTLOOK: gettext("Microsoft Outlook E-Mail"),
+    JSON: gettext("JSON"),
 }
