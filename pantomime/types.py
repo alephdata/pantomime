@@ -7,11 +7,13 @@ EMPTY = "inode/x-empty"
 PLAIN = "text/plain"
 PDF = "application/pdf"
 EXCEL = "application/vnd.ms-excel"
+XLS = EXCEL
 XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 WORD = "application/vnd.ms-word"
 DOCX = "application/vnd.openxmlformats-officedocument.wordprocessing"
 CSV = "text/csv"
 RTF = "text/rtf"
+XML = "text/xml"
 PSD = "image/vnd.adobe.photoshop"
 RAR = "application/rar"
 ZIP = "application/zip"
@@ -27,6 +29,7 @@ OPF = "application/xml+opfmessage"
 OUTLOOK = "application/vnd.ms-outlook"
 ZIP = "application/zip"
 JSON = "application/json"
+FTM = "application/json+ftm"
 
 MIXED = "multipart/mixed"
 ALTERNATIVE = "multipart/alternative"
@@ -58,5 +61,7 @@ LABELS = {
     GIF: gettext("Graphics Interchange Format"),
     OPF: gettext("Microsoft Outlook for Mac E-Mail"),
     OUTLOOK: gettext("Microsoft Outlook E-Mail"),
-    JSON: gettext("JSON"),
+    JSON: gettext("JavaScript Object Notation"),
+    XML: gettext("eXtensible Markup Language"),
+    FTM: gettext("FollowTheMoney Entities"),
 }
