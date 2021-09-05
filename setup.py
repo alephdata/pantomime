@@ -26,12 +26,11 @@ setup(
     license="MIT",
     packages=find_packages(exclude=["ez_setup", "examples", "test"]),
     namespace_packages=[],
-    package_data={},
+    package_data={"pantomime": ["py.typed"]},
     include_package_data=True,
     zip_safe=False,
     test_suite="nose.collector",
     install_requires=[
-        "six >= 1.11.0",
         "banal >= 0.3.5",
         "normality >= 0.5.6",
     ],
