@@ -10,7 +10,6 @@ class MIMETest(unittest.TestCase):
         self.assertEqual(normalize_mimetype("TEXT/"), DEFAULT)
         self.assertEqual(normalize_mimetype("1"), DEFAULT)
         self.assertEqual(normalize_mimetype("1", default=None), None)
-        self.assertEqual(normalize_mimetype("1", default="foo"), None)
         self.assertEqual(normalize_mimetype(None), DEFAULT)
 
         PST = "application/VND.ms-outlook"

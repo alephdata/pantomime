@@ -10,7 +10,7 @@ def parse_mimetype(text: Optional[str], default: str = DEFAULT) -> MIMEType:
 
 def normalize_mimetype(text: Optional[str], default: str = DEFAULT) -> str:
     """Normalize the spelling of a MIME type."""
-    return parse_mimetype(text, default=default).normalized
+    return parse_mimetype(text, default=default).normalized or default
 
 
 def useful_mimetype(text: Optional[str]) -> bool:

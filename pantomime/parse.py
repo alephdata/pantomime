@@ -23,7 +23,9 @@ class MIMEType(object):
         self.name: Optional[str] = None
         if self.family is not None and self.subtype is not None:
             self.name = self.SEP.join((self.family, self.subtype))
-        self.normalized: Optional[str] = REPLACE.get(self.name, self.name)
+        self.normalized: Optional[str] = self.name
+        if self.name in REPLACE:
+            self.normalized = REPLACE.get(self.name, self.name)
         self.params: Dict[str, str] = params or {}
 
     @property

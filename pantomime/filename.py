@@ -49,7 +49,7 @@ class FileName(object):
         default = "data.%s" % ext if ext else self.FALLBACK
         return safe_filename(self.file_name, default=default, extension=ext)
 
-    def __str__(self) -> Optional[str]:
+    def __str__(self) -> str:
         return self.file_name or self.FALLBACK
 
     def __repr__(self) -> str:
