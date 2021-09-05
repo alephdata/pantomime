@@ -1,6 +1,6 @@
 # pantomime
 
-[![Build Status](https://travis-ci.org/alephdata/pantomime.svg?branch=master)](https://travis-ci.org/alephdata/pantomime)
+[![build](https://github.com/alephdata/pantomime/actions/workflows/build.yml/badge.svg)](https://github.com/alephdata/pantomime/actions/workflows/build.yml)
 
 ``pantomime`` is a small library that handles the parsing and normalisation
 of internet MIME types in Python. This can be useful to normalise invalid,
