@@ -1,4 +1,2 @@
-
-
-def gettext(text):
+def gettext(text: str) -> str:
     return text

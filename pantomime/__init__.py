@@ -6,7 +6,13 @@ from pantomime.filename import FileName
 from pantomime.filename import normalize_extension, mimetype_extension
 
 __all__ = [
-    MIMEType, FileName, DEFAULT, PLAIN,
-    parse_mimetype, normalize_mimetype, useful_mimetype,
-    normalize_extension, mimetype_extension
+    "MIMEType",
+    "FileName",
+    "DEFAULT",
+    "PLAIN",
+    "parse_mimetype",
+    "normalize_mimetype",
+    "useful_mimetype",
+    "normalize_extension",
+    "mimetype_extension",
 ]

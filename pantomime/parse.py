@@ -1,4 +1,5 @@
 from cgi import parse_header
+from typing import Any, Dict, Optional, Tuple
 from normality import stringify
 from normality.encoding import normalize_encoding
 
@@ -7,36 +8,47 @@ from pantomime.mappings import REPLACE
 
 
 class MIMEType(object):
-    __slots__ = ['family', 'subtype', 'params', 'name', 'normalized']
+    __slots__ = ["family", "subtype", "params", "name", "normalized"]
 
-    SEP = '/'
+    SEP = "/"
 
-    def __init__(self, family, subtype, params=None):
+    def __init__(
+        self,
+        family: Optional[str],
+        subtype: Optional[str],
+        params: Optional[Dict[str, str]] = None,
+    ):
         self.family = family
         self.subtype = subtype
-        self.name = None
+        self.name: Optional[str] = None
         if self.family is not None and self.subtype is not None:
             self.name = self.SEP.join((self.family, self.subtype))
-        self.normalized = REPLACE.get(self.name, self.name)
-        self.params = params or {}
+        self.normalized: str = DEFAULT
+        if self.name is not None:
+            self.normalized = REPLACE.get(self.name, DEFAULT)
+        self.params: Dict[str, str] = params or {}
 
     @property
-    def label(self):
+    def label(self) -> str:
         if self.normalized in LABELS:
-            return LABELS.get(self.normalized)
+            return LABELS.get(self.normalized, self.normalized)
         if self.subtype is not None:
-            label = self.subtype.lstrip('x')
-            label = label.replace('-', ' ')
-            label = label.replace('.', ' ')
+            label = self.subtype.lstrip("x")
+            label = label.replace("-", " ")
+            label = label.replace(".", " ")
             return label.strip()
+        return self.normalized
 
     @property
-    def charset(self):
-        charset = self.params.get('charset')
-        return normalize_encoding(charset, default=None)
+    def charset(self) -> Optional[str]:
+        charset = self.params.get("charset")
+        if charset is None:
+            return None
+        # return normalize_encoding(charset, default=None)
+        return normalize_encoding(charset)
 
     @classmethod
-    def split(cls, mime_type):
+    def split(cls, mime_type: Optional[str]) -> Tuple[Optional[str], Optional[str]]:
         if mime_type is None or cls.SEP not in mime_type:
             return None, None
         family, subtype = (stringify(p) for p in mime_type.split(cls.SEP, 1))
@@ -45,7 +57,9 @@ class MIMEType(object):
         return family.lower(), subtype.lower()
 
     @classmethod
-    def parse(cls, mime_type, default=None):
+    def parse(
+        cls, mime_type: Optional[str], default: Optional[str] = None
+    ) -> "MIMEType":
         mime_type = stringify(mime_type)
         params = None
         if mime_type is not None:
@@ -56,14 +70,14 @@ class MIMEType(object):
             family, subtype = cls.split(default)
         return cls(family, subtype, params=params)
 
-    def __eq__(self, other):
-        return self.name == other.name
+    def __eq__(self, other: Any) -> bool:
+        return str(self) == str(other)
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(self.name)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name or DEFAULT
 
-    def __repr__(self):
-        return self.name
+    def __repr__(self) -> str:
+        return str(self)
