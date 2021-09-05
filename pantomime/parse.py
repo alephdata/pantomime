@@ -23,13 +23,11 @@ class MIMEType(object):
         self.name: Optional[str] = None
         if self.family is not None and self.subtype is not None:
             self.name = self.SEP.join((self.family, self.subtype))
-        self.normalized: str = DEFAULT
-        if self.name is not None:
-            self.normalized = REPLACE.get(self.name, DEFAULT)
+        self.normalized: Optional[str] = REPLACE.get(self.name, self.name)
         self.params: Dict[str, str] = params or {}
 
     @property
-    def label(self) -> str:
+    def label(self) -> Optional[str]:
         if self.normalized in LABELS:
             return LABELS.get(self.normalized, self.normalized)
         if self.subtype is not None:
@@ -37,7 +35,7 @@ class MIMEType(object):
             label = label.replace("-", " ")
             label = label.replace(".", " ")
             return label.strip()
-        return self.normalized
+        return None
 
     @property
     def charset(self) -> Optional[str]:
@@ -51,8 +49,8 @@ class MIMEType(object):
     def split(cls, mime_type: Optional[str]) -> Tuple[Optional[str], Optional[str]]:
         if mime_type is None or cls.SEP not in mime_type:
             return None, None
-        family, subtype = (stringify(p) for p in mime_type.split(cls.SEP, 1))
-        if family is None or subtype is None:
+        family, subtype = (p.strip() for p in mime_type.split(cls.SEP, 1))
+        if len(family) == 0 or len(subtype) == 0:
             return None, None
         return family.lower(), subtype.lower()
 
@@ -74,7 +72,7 @@ class MIMEType(object):
         return str(self) == str(other)
 
     def __hash__(self) -> int:
-        return hash(self.name)
+        return hash(str(self))
 
     def __str__(self) -> str:
         return self.name or DEFAULT
