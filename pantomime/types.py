@@ -30,6 +30,8 @@ OUTLOOK = "application/vnd.ms-outlook"
 ZIP = "application/zip"
 JSON = "application/json"
 FTM = "application/json+ftm"
+FTM_RSLV = "application/json+ftm-rslv"
+FTM_STMT = "application/json+ftm-statements"
 
 MIXED = "multipart/mixed"
 ALTERNATIVE = "multipart/alternative"
@@ -64,4 +66,6 @@ LABELS = {
     JSON: gettext("JavaScript Object Notation"),
     XML: gettext("eXtensible Markup Language"),
     FTM: gettext("FollowTheMoney Entities"),
+    FTM_RSLV: gettext("FollowTheMoney Integrated"),
+    FTM_STMT: gettext("FollowTheMoney Statements"),
 }
