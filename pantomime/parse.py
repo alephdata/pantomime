@@ -1,7 +1,7 @@
 from cgi import parse_header
 from typing import Any, Dict, Optional, Tuple
 from normality import stringify
-from normality.encoding import normalize_encoding
+from normality.encoding import tidy_encoding
 
 from pantomime.types import DEFAULT, LABELS
 from pantomime.mappings import REPLACE
@@ -44,8 +44,7 @@ class MIMEType(object):
         charset = self.params.get("charset")
         if charset is None:
             return None
-        # return normalize_encoding(charset, default=None)
-        return normalize_encoding(charset)
+        return tidy_encoding(charset)
 
     @classmethod
     def split(cls, mime_type: Optional[str]) -> Tuple[Optional[str], Optional[str]]:

@@ -29,7 +29,6 @@ setup(
     package_data={"pantomime": ["py.typed"]},
     include_package_data=True,
     zip_safe=False,
-    test_suite="nose.collector",
     install_requires=[
         "banal >= 0.3.5",
         "normality >= 0.5.6",
@@ -43,7 +42,8 @@ setup(
             "mypy",
             "black",
             "flake8>=2.6.0",
-            "nose",
+            "pytest",
+            "pytest-cov",
             "banal",
             "coverage>=4.1",
         ]
