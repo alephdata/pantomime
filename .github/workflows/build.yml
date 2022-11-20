@@ -24,7 +24,7 @@ jobs:
           make test
       - name: Check type annotations (strict)
         run: |
-          make check
+          make typecheck
       - name: Build a distribution
         run: |
           python setup.py sdist bdist_wheel
