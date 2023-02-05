@@ -59,7 +59,7 @@ LABELS = {
     JPEG: gettext("JPEG Image"),
     TIFF: gettext("Tagged Image File Format"),
     DJVU: gettext("DejaVu E-Book"),
-    PNG: gettext("Portable Nework Graphics"),
+    PNG: gettext("Portable Network Graphics"),
     GIF: gettext("Graphics Interchange Format"),
     OPF: gettext("Microsoft Outlook for Mac E-Mail"),
     OUTLOOK: gettext("Microsoft Outlook E-Mail"),
