@@ -1,4 +1,4 @@
-from cgi import parse_header
+from email.message import EmailMessage
 from typing import Any, Dict, Optional, Tuple
 from normality import stringify
 from normality.encoding import tidy_encoding
@@ -62,7 +62,10 @@ class MIMEType(object):
         mime_type = stringify(mime_type)
         params = None
         if mime_type is not None:
-            mime_type, params = parse_header(mime_type)
+            msg = EmailMessage()
+            msg['content-type'] = mime_type
+            mime_type = msg.get_content_type() if mime_type.count("/") == 1 else None
+            params = msg['content-type'].params
 
         family, subtype = cls.split(mime_type)
         if family is None:
