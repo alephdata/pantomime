@@ -6,7 +6,7 @@ with open("README.md") as f:
 
 setup(
     name="pantomime",
-    version="0.5.3",
+    version="0.6.0",
     description="MIME type normalisation and labels.",
     long_description=long_description,
     long_description_content_type="text/markdown",
