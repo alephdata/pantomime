@@ -1,6 +1,6 @@
 from typing import Dict
 from pantomime.types import DEFAULT, PLAIN, DIRECTORY
-from pantomime.types import EXCEL, PDF, CSV, RTF, PSD, WORD
+from pantomime.types import EXCEL, PDF, CSV, RTF, PSD, WORD, XML
 from pantomime.types import RAR, ZIP, GZIP, TIFF, JPEG
 
 REPLACE: Dict[str, str] = {
@@ -18,6 +18,8 @@ REPLACE: Dict[str, str] = {
     "*/*": DEFAULT,
     # CSV
     "application/csv": CSV,
+    # XML
+    "text/xml": XML,
     # Plain
     "plain/text": PLAIN,
     "text/text": PLAIN,
